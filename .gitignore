@@ -1,0 +1,7 @@
+/node_modules
+/styles/tailwind
+/dist
+/.env
+/src/env.json
+/.parcel-cache
+/index.html
