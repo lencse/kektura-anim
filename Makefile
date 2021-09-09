@@ -1,4 +1,4 @@
-.PHONY: dev
+.PHONY: dev verify lint lint_fix check_types
 
 ifneq (,$(wildcard ./.env))
     include .env
@@ -38,3 +38,14 @@ $(TAILWIND_PROD_CSS): $(NODE) $(TAILWIND_SRC_CSS)
 
 $(TAILWIND_DEV_CSS): $(NODE) $(TAILWIND_SRC_CSS)
 	$(BIN)/tailwind -i $(TAILWIND_SRC_CSS) -o $(TAILWIND_DEV_CSS)
+
+verify: check_types lint
+
+check_types: $(NODE)
+	$(BIN)/tsc
+
+lint: $(NODE)
+	$(BIN)/eslint .
+
+lint_fix: $(NODE)
+	$(BIN)/eslint . --fix

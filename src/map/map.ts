@@ -2,10 +2,10 @@ import config from '../config'
 import { map, tileLayer } from 'leaflet'
 import { attribution } from './attribution/map-attribution'
 
-export default function () {
+export default function (): void {
     const initBounds = config.map.initial.boundaries
     const leaflet = map('map', {
-        zoomControl: false,
+        zoomControl: false
         // zoom: false,
         // touchZoom: false,
         // scrollWheelZoom: false,
@@ -13,7 +13,7 @@ export default function () {
         // keyboard: false,
     }).fitBounds([
         [initBounds.minLat, initBounds.minLon],
-        [initBounds.maxLat, initBounds.maxLon],
+        [initBounds.maxLat, initBounds.maxLon]
     ])
 
     tileLayer(config.mapbox.url, {
@@ -23,6 +23,6 @@ export default function () {
         id: config.mapbox.layer,
         tileSize: config.mapbox.tileSize,
         zoomOffset: -1,
-        accessToken: config.mapbox.token,
+        accessToken: config.mapbox.token
     }).addTo(leaflet)
 }
